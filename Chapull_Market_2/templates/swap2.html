@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <form action="" method="post"> {% csrf_token %}
+<div class="register_div">
+
+
+
+<select name="cars" multiple>
+    {% for items in your_items  %}
+
+  <option value="your_items">{{ items.item_model }}</option>
+
+
+    {% endfor %}
+</select>
+
+
+<select name="cars" multiple>
+    {% for items in swapper_items %}
+
+  <option value="swapper_items">{{ items.item_model }}</option>
+
+
+    {% endfor %}
+</select>
+
+
+
+{#<select name="cars" multiple>#}
+{#    {% for items in swapper_items %}#}
+{##}
+{#  <option value="volvo">{{ items.item_model }}</option>#}
+{##}
+{#    {% endfor %}#}
+{#</select>#}
+
+{#    {% for item in swapper_items|slice:":1" %}#}
+{##}
+{#    <label>{{ item.item_swapper }}</label>#}
+{##}
+{#    {% endfor %}#}
+
+</div>
+
+<input type="submit" name="submit" value="Swap" >
+   </form>
+{% endblock %}

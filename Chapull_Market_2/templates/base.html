@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chapull Market</title>
+</head>
+
+<body>
+
+<div id="pageController">
+    <div id="nav_top_right">
+           {%  if user.is_authenticated  %} <p> <a href="/logout/"> Log Out  </a> </p>  {% else %}  <p><a href="/login/"> Log In  </a></p>
+            {% endif %}
+    </div>
+
+
+ <div id="nav_top_right">
+   <p> <a href="/{{ user.swapper.id }}/items/"> Your Items </a>  &nbsp&nbsp  <a href="/{{ user.swapper.id }}/other_users_items/"> Users Items </a>  &nbsp&nbsp
+       <a href="/swappers/"> Users </a>  </a>  &nbsp&nbsp&nbsp  <a href="/{{ user.swapper.id}}/offers/"> Coming Offers </a> &nbsp&nbsp&nbsp
+       <a href="/{{ user.swapper.id}}/sending_offers"> Sending Offers </a>&nbsp&nbsp&nbsp
+       <a href=/additem> Add Item </a>  </p>
+       <a href=/completed_offers> Completed Offers </a>  </p>
+
+    </div>
+
+</div>
+
+ Merhaba {{ user.username }} <br>
+-----------------------
+
+<div id="pageContainer">
+    {% block content %}
+    {% endblock %}
+
+</div>
+</body>
+</html>

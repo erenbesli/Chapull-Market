@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load staticfiles %}
+
+    <div id="single_item" xmlns="http://www.w3.org/1999/html">
+        <p> Model: {{ item.item_model }}</p>
+        <p> Status: {{ item.item_status }}</p>
+        <p> Photo:</p>
+        <p> <img src= "{% static item.image1.url  %} " width="200" /> </p>
+
+        {% if user.swapper.id == item.item_swapper.id  %}
+            <p> <a href="/delete/{{ item.slug }}">  Delete  </a>  &nbsp&nbsp <a href="/edit/">  Edit Details  </a> </p>
+
+        {% else %}
+        <p> <a href="/swap/{{ user.username }}/want/{{ item.slug }}/from/{{ item.item_swapper.slug }}"> Swap </a> </p> &nbsp&nbsp&nbsp
+         <p> <a href="/swap/{{ user.swapper.id }}/{{ item.item_swapper_id }}"/> Swap2 </a> </p>
+
+        {% endif %}
+    </div>
+
+{% endblock %}

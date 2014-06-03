@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="swapperlist">
+            {% for swapper in swappers %}
+            <p> <a href="/swappers/{{ swapper.slug }}/"> <img src="{{ swapper.photo.url }}"/> {{ swapper }} </a></p>
+            {% endfor %}
+    </div>
+
+{% endblock %}

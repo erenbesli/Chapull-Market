@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% load staticfiles %}
+
+    <div id="user_items">
+            {% for item in items %}
+                <p>{{ item.item_model }}</p>
+            <p> <a href="/items/{{ item.slug }}/"> <img src= "{% static item.image1.url  %} " width="200" /> </a>  <a href="/delete/"> &nbsp &nbsp Delete</a>  </p>
+            {% endfor %}
+    </div>
+
+{% endblock %}

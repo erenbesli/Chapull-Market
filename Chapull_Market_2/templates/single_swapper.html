@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="single_swapper">
+        <p> Name: {{ swapper.name }}</p>
+        <p> Status: {{ swapper.address }}</p>
+        <p> Photo: {{ swapper.photo }}</p>
+    <p> <a href="/swapperss/{{ swapper.slug }}/itemss">  {{ swapper.name }} items </a></p>
+
+    </div>
+
+{% endblock %}

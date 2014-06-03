@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if offer.swapper.id == user.swapper.id and offer.other_swapper_dec == "empty" %}
+
+        You wants {{ offer.other_swapper_item}} from {{ offer.other_swapper.name }}
+
+
+        {% else %}
+
+
+    <form action="" method="post">{% csrf_token %}
+    <div id="single_item">
+
+    {% for items in swapper_items|slice:":1" %}
+
+    {{ items.item_swapper.name }} ın itemlarından birini seçebilirsin.
+
+    {% endfor %}
+        <select name="swapper_items" id="swapper_items">
+{% for items in swapper_items %}
+
+       <option value="{{ items.item_model }}">{{ items.item_model }}</option>
+
+    {% endfor %}
+
+        </select>
+
+    <p> <input type="submit"   alt="register"/> </p>
+
+       </div>
+
+    </form>
+
+{#            {% for offers in offer %}#}
+{##}
+{#                {{ offers.other_swapper.name}}#}
+{#                {{ offers.swapper.name}}#}
+{#                {{ offers.other_swapper_item.item_model }}#}
+{##}
+{#    {% endfor %}#}
+
+
+{% endif %}
+
+{% endblock %}

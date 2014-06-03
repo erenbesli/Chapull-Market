@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{#    {% for offer in offers %}#}
+{##}
+{#         {{ user.swapper.id }}  and {{ offer.swapper.id }} and {{ offer.other_swapper }}#}
+{##}
+{#    {% endfor %}#}
+
+
+
+
+    <div id="single_item">
+            {% for offer in offers %}
+               {% if user.swapper.id == offer.swapper.id %}
+
+                   You want {{ offer.other_swapper_item }} from {{ offer.other_swapper.name }} and </br>
+                   {{ offer.other_swapper.name }} want {{ offer.swapper_item.item_model }} to give {{ offer.other_swapper_item.item_model }}
+
+                   </br></br>{{ offer.swap_status }}
+                    <p>-----------------------</p>
+
+
+               {% elif user.swapper.id == offer.other_swapper.id %}
+
+                   <p> {{ offer.swapper.name }} want {{ offer.other_swapper_item.item_model }} from you and you offer to give {{ offer.swapper_item.item_model }} </p>
+
+                   </br> {{ offer.swap_status }}
+
+                {% endif %}
+            {% endfor %}
+
+
+    </div>
+
+{% endblock %}

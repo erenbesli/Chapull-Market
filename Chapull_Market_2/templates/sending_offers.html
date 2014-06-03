@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="single_item">
+            {% for offer in send_offers %}
+
+            {% if offer.swap_status == "in progress"  and  offer.other_swapper_dec == "empty" and offer.swapper_dec == "empty" %}
+
+             <p>You wants {{ offer.other_swapper_item.item_model }} from {{ offer.other_swapper }} </p> you should wait for answer
+             <p> {{ offer.swap_status }} </p>
+             <p> <a href="/sending/{{ offer.id }}/giveup"> Give Up  </a>  </p>
+             <p align="left">-----------------------------------------</p>
+
+             {% elif offer.swap_status == "in progress"  and  offer.other_swapper_dec == "accept" and offer.swapper_dec == "empty" %}
+
+                You want {{ offer.other_swapper_item }} from {{ offer.other_swapper.name }} and
+                </br> {{ offer.other_swapper.name }} want {{ offer.swapper_item.item_model }} to give {{ offer.other_swapper_item.item_model }}
+
+                <p> <a href="/sending/{{ offer.id }}/accept">Accept</a>  <a href="/sending/{{ offer.id }}/cancel">Cencel</a> &nbsp&nbsp&nbsp {{ offer.swap_status }}   </br></br> </p>
+                <p align="left">-----------------------------------------</p>
+
+             {% endif %}
+
+
+            {% endfor %}
+
+
+    </div>
+
+{% endblock %}

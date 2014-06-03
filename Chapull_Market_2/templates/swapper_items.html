@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load staticfiles %}
+
+    <div id="swapper_items">
+            {% for item in swapper_items %}
+            <p>Item Model: {{ item.item_model }} </p>
+            <p>Item Status: {{ item.item_status }} </p>
+            <p>Item Swapper:  {{ item.item_swapper }} </p>
+            <p> Photo:</p>
+            <p> <img src= "{% static item.image1.url  %} " width="200" /> </p>
+            <p align="left">-----------------------------------------</p>
+            {% endfor %}
+    </div>
+
+{% endblock %}

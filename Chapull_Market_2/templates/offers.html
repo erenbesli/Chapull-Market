@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="single_item">
+            {% for offer in swapper_offers %}
+
+            {% if offer.swap_status == 'in progress' and  offer.swapper_item.item_model == "empty" %}
+
+                <p> <a href="/{{ offer.swapper.id }}/{{ offer.id }}/offer_details"> {{ offer.swapper.name }} wants {{ offer.other_swapper_item.item_model }} from you  </a> </p>
+
+                <p> <a href="/coming/{{ offer.id }}/cancel">Cencel</a> &nbsp&nbsp&nbsp {{ offer.swap_status }}   </br></br> </p>
+
+                <p align="left">-----------------------------------------</p>
+
+            {% elif offer.swap_status == "in progress"  and offer.other_swapper_dec == "accept" and  offer.swapper_dec == "empty"  %}
+                    {% ifnotequal offer.other_swapper_item.item_model "empty" %}
+                <p> {{ offer.swapper.name }} want {{ offer.other_swapper_item.item_model }} from you and you offer to give {{ offer.swapper_item.item_model }} </p>
+
+                <p><a href="/coming/{{ offer.id }}/giveup"> Give up  </a> </p>
+                <p align="left">-----------------------------------------</p>
+            {% endifnotequal %}
+            {% endif %}
+
+            {% endfor %}
+
+
+    </div>
+
+{% endblock %}
